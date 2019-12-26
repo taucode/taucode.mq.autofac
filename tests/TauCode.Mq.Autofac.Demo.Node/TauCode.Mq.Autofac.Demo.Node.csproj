@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Grammar.lisp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TauCode.Cli" Version="1.0.0-dev-2019-12-25-20-59" />
+    <PackageReference Include="TauCode.Mq.EasyNetQ" Version="1.0.0-dev-2019-12-26-18-16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Grammar.lisp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TauCode.Mq.Autofac\TauCode.Mq.Autofac.csproj" />
+    <ProjectReference Include="..\TauCode.Mq.Autofac.Demo.All\TauCode.Mq.Autofac.Demo.All.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{709CF0D4-DBFE-46E7-B797-09B67BF95F87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{585AC245-8B6E-4F5E-8EEF-D4125EF88880}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{3D7345E7-A59D-409F-8649-927EF2AD9794}"
+	ProjectSection(SolutionItems) = preProject
+		nuget\TauCode.Mq.Autofac.nuspec = nuget\TauCode.Mq.Autofac.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{86DFAC41-2BA0-4A11-85D1-12712E3BB72C}"
+	ProjectSection(SolutionItems) = preProject
+		misc\changelog.txt = misc\changelog.txt
+		misc\todo.txt = misc\todo.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TauCode.Mq.Autofac", "src\TauCode.Mq.Autofac\TauCode.Mq.Autofac.csproj", "{17F5E226-9664-444F-AD7A-E768F6479A15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Demo.All", "tests\TauCode.Mq.Autofac.Demo.All\TauCode.Mq.Autofac.Demo.All.csproj", "{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Demo.Logger", "tests\TauCode.Mq.Autofac.Demo.Logger\TauCode.Mq.Autofac.Demo.Logger.csproj", "{2826CA3A-2C61-404C-9A55-D3CBE46C8485}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Demo.Node", "tests\TauCode.Mq.Autofac.Demo.Node\TauCode.Mq.Autofac.Demo.Node.csproj", "{3BDE9B7B-EB4C-4493-89BF-B35900DED55A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17F5E226-9664-444F-AD7A-E768F6479A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F5E226-9664-444F-AD7A-E768F6479A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F5E226-9664-444F-AD7A-E768F6479A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F5E226-9664-444F-AD7A-E768F6479A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2826CA3A-2C61-404C-9A55-D3CBE46C8485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2826CA3A-2C61-404C-9A55-D3CBE46C8485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2826CA3A-2C61-404C-9A55-D3CBE46C8485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2826CA3A-2C61-404C-9A55-D3CBE46C8485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BDE9B7B-EB4C-4493-89BF-B35900DED55A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BDE9B7B-EB4C-4493-89BF-B35900DED55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BDE9B7B-EB4C-4493-89BF-B35900DED55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BDE9B7B-EB4C-4493-89BF-B35900DED55A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17F5E226-9664-444F-AD7A-E768F6479A15} = {709CF0D4-DBFE-46E7-B797-09B67BF95F87}
+		{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
+		{2826CA3A-2C61-404C-9A55-D3CBE46C8485} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
+		{3BDE9B7B-EB4C-4493-89BF-B35900DED55A} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA6859C8-B1CF-4CDF-A5FE-24E4FF8F85B8}
+	EndGlobalSection
+EndGlobal
