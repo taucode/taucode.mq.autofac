@@ -15,7 +15,7 @@
     <tags>taucode message queue autofac</tags>
     <dependencies>
       <dependency id="Autofac" version="4.9.4" />
-      <dependency id="TauCode.Mq" version="1.0.0-dev-2019-12-26-17-59" />
+      <dependency id="TauCode.Mq" version="1.0.0-dev-2019-12-29-16-05" />
     </dependencies>
   </metadata>
   <files>
