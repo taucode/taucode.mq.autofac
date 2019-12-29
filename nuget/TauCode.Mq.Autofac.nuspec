@@ -7,7 +7,7 @@
     <owners>TauCode</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="file">LICENSE.txt</license>
-    <projectUrl>https://github.com/taucode/taucode.mq.easynetq</projectUrl>
+    <projectUrl>https://github.com/taucode/taucode.mq.autofac</projectUrl>
     <description>Autofac DI features for TauCode messaging</description>
     <releaseNotes>
       Initial version
