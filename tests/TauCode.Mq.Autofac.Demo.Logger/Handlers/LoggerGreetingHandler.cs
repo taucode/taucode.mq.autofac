@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using TauCode.Mq.Abstractions;
 using TauCode.Mq.Autofac.Demo.All.Messages;
 
 namespace TauCode.Mq.Autofac.Demo.Logger.Handlers
