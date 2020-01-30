@@ -3,7 +3,6 @@ using System;
 
 namespace TauCode.Mq.Autofac
 {
-    // todo clean
     public class AutofacMessageHandlerContext : IMessageHandlerContext
     {
         private readonly ILifetimeScope _contextLifetimeScope;
@@ -11,25 +10,21 @@ namespace TauCode.Mq.Autofac
         public AutofacMessageHandlerContext(ILifetimeScope contextLifetimeScope)
         {
             _contextLifetimeScope = contextLifetimeScope ?? throw new ArgumentNullException(nameof(contextLifetimeScope));
-            //this.ContextLifetimeScope =
-            //    contextLifetimeScope ?? throw new ArgumentNullException(nameof(contextLifetimeScope));
         }
 
-        //public ILifetimeScope ContextLifetimeScope { get; }
-
-        public void Begin()
+        public virtual void Begin()
         {
             // idle
         }
 
-        public void End()
+        public virtual void End()
         {
             // end
         }
 
-        public object GetService(Type serviceType) => _contextLifetimeScope.Resolve(serviceType);
+        public virtual object GetService(Type serviceType) => _contextLifetimeScope.Resolve(serviceType);
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             _contextLifetimeScope.Dispose();
         }
