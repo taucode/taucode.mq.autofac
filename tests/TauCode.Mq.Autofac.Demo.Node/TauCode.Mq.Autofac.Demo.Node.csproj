@@ -10,8 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="TauCode.Cli" Version="1.0.0-dev-2019-12-25-20-59" />
-    <PackageReference Include="TauCode.Mq.EasyNetQ" Version="1.0.0-dev-2019-12-29-16-33" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="TauCode.Cli" Version="1.0.0-dev-2020-01-20-17-32" />
+    <PackageReference Include="TauCode.Mq.EasyNetQ" Version="1.0.0-dev-2020-01-30-14-07" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Serilog;
 using System;
 using TauCode.Mq.Autofac.Demo.Logger.Handlers;
 using TauCode.Mq.EasyNetQ;
@@ -29,10 +30,6 @@ namespace TauCode.Mq.Autofac.Demo.Logger
 
             containerBuilder.RegisterType<EasyNetQMessageSubscriber>().As<IMessageSubscriber>().SingleInstance();
 
-            //containerBuilder
-            //    .Register(context => new AutofacMessageHandlerFactoryLab(context.Resolve<ILifetimeScope>()))
-            //    .As<IMessageHandlerFactoryLab>().SingleInstance();
-
             containerBuilder
                 .Register(context => new AutofacMessageHandlerContextFactory(context.Resolve<ILifetimeScope>()))
                 .As<IMessageHandlerContextFactory>()
@@ -44,10 +41,16 @@ namespace TauCode.Mq.Autofac.Demo.Logger
 
         public void Run()
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Warning()
+                .WriteTo.Console()
+                .CreateLogger();
+
             const string name = "logger";
 
             Console.WriteLine($"App '{name}' started.");
 
+            // todo: function never returns (thanks resharper)
             while (true)
             {
                 _publisher = new EasyNetQMessagePublisher
@@ -59,12 +62,6 @@ namespace TauCode.Mq.Autofac.Demo.Logger
                 _subscriber = _container.Resolve<IMessageSubscriber>();
                 _subscriber.Name = name;
                 ((EasyNetQMessageSubscriber)_subscriber).ConnectionString = "host=localhost";
-
-                //_subscriber = new EasyNetQMessageSubscriberLab(_container.Resolve<IMessageHandlerFactoryLab>())
-                //{
-                //    Name = name,
-                //    ConnectionString = "host=localhost",
-                //};
 
                 _publisher.Start();
 

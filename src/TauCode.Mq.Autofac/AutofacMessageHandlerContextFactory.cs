@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using System;
-using TauCode.Mq.Abstractions;
 
+// todo clean
 namespace TauCode.Mq.Autofac
 {
     public class AutofacMessageHandlerContextFactory : IMessageHandlerContextFactory
@@ -20,12 +20,12 @@ namespace TauCode.Mq.Autofac
             return context;
         }
 
-        public IMessageHandler CreateHandler(IMessageHandlerContext context, Type handlerType)
-        {
-            var autofacMessageHandlerContext = (AutofacMessageHandlerContext)context; // todo check this
-            var scope = autofacMessageHandlerContext.ContextLifetimeScope;
-            var handler = (IMessageHandler)scope.Resolve(handlerType);
-            return handler;
-        }
+        //public IMessageHandler CreateHandler(IMessageHandlerContext context, Type handlerType)
+        //{
+        //    var autofacMessageHandlerContext = (AutofacMessageHandlerContext)context; // todo check this
+        //    var scope = autofacMessageHandlerContext.ContextLifetimeScope;
+        //    var handler = (IMessageHandler)scope.Resolve(handlerType);
+        //    return handler;
+        //}
     }
 }
