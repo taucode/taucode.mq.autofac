@@ -5,16 +5,16 @@ namespace TauCode.Mq.Autofac
 {
     public class AutofacMessageHandlerContextFactory : IMessageHandlerContextFactory
     {
-        private readonly ILifetimeScope _rootLifetimeScope;
-
         public AutofacMessageHandlerContextFactory(ILifetimeScope rootLifetimeScope)
         {
-            _rootLifetimeScope = rootLifetimeScope ?? throw new ArgumentNullException(nameof(rootLifetimeScope));
+            this.RootLifetimeScope = rootLifetimeScope ?? throw new ArgumentNullException(nameof(rootLifetimeScope));
         }
+
+        protected ILifetimeScope RootLifetimeScope { get; private set; }
 
         public virtual IMessageHandlerContext CreateContext()
         {
-            var childScope = _rootLifetimeScope.BeginLifetimeScope();
+            var childScope = this.RootLifetimeScope.BeginLifetimeScope();
             var context = new AutofacMessageHandlerContext(childScope);
             return context;
         }
