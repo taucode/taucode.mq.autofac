@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,8 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="TauCode.Cli" Version="1.0.0-dev-2019-12-25-20-59" />
-    <PackageReference Include="TauCode.Mq.EasyNetQ" Version="1.0.0-dev-2019-12-29-16-33" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="TauCode.Cli" Version="1.0.0-dev-2020-03-15-21-09" />
+    <PackageReference Include="TauCode.Mq.EasyNetQ" Version="1.0.0-dev-2020-03-15-08-30" />
   </ItemGroup>
 
   <ItemGroup>

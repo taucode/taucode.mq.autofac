@@ -5,27 +5,28 @@ namespace TauCode.Mq.Autofac
 {
     public class AutofacMessageHandlerContext : IMessageHandlerContext
     {
+        private readonly ILifetimeScope _contextLifetimeScope;
+
         public AutofacMessageHandlerContext(ILifetimeScope contextLifetimeScope)
         {
-            this.ContextLifetimeScope =
-                contextLifetimeScope ?? throw new ArgumentNullException(nameof(contextLifetimeScope));
+            _contextLifetimeScope = contextLifetimeScope ?? throw new ArgumentNullException(nameof(contextLifetimeScope));
         }
 
-        public ILifetimeScope ContextLifetimeScope { get; }
-
-        public void Begin()
+        public virtual void Begin()
         {
             // idle
         }
 
-        public void End()
+        public virtual void End()
         {
             // end
         }
 
-        public void Dispose()
+        public virtual object GetService(Type serviceType) => _contextLifetimeScope.Resolve(serviceType);
+
+        public virtual void Dispose()
         {
-            this.ContextLifetimeScope?.Dispose();
+            _contextLifetimeScope.Dispose();
         }
     }
 }

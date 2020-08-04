@@ -1,7 +1,9 @@
 ﻿using Autofac;
+using Serilog;
 using System;
-using TauCode.Mq.Autofac.Demo.All.Messages;
-using TauCode.Mq.Autofac.Demo.Node.CommandLine;
+using TauCode.Cli;
+using TauCode.Cli.Exceptions;
+using TauCode.Mq.Autofac.Demo.Node.Cli;
 using TauCode.Mq.Autofac.Demo.Node.Handlers;
 using TauCode.Mq.EasyNetQ;
 
@@ -9,6 +11,11 @@ namespace TauCode.Mq.Autofac.Demo.Node
 {
     internal class Program
     {
+        private class ExitException : Exception
+        {
+
+        }
+
         private string _name;
         private IMessagePublisher _publisher;
         private IMessageSubscriber _subscriber;
@@ -44,6 +51,11 @@ namespace TauCode.Mq.Autofac.Demo.Node
 
         public void Run()
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Warning()
+                .WriteTo.Console()
+                .CreateLogger();
+
             while (true)
             {
                 try
@@ -65,12 +77,6 @@ namespace TauCode.Mq.Autofac.Demo.Node
 
             Console.WriteLine($"Node started with name '{_name}'.");
 
-            //_publisher = new EasyNetQMessagePublisherLab
-            //{
-            //    Name = _name,
-            //    ConnectionString = "host=localhost",
-            //};
-
             _publisher = _container.Resolve<IMessagePublisher>();
             ((EasyNetQMessagePublisher)_publisher).ConnectionString = "host=localhost";
 
@@ -87,20 +93,56 @@ namespace TauCode.Mq.Autofac.Demo.Node
 
             _subscriber.Start();
 
-            var parser = new CliParser();
+            //var parser = new CliParser();
+            //while (true)
+            //{
+            //    Console.Write($"{_name} >");
+            //    var txt = Console.ReadLine();
+            //    if (txt == "exit")
+            //    {
+            //        break;
+            //    }
 
+            //    var command = parser.Parse(txt);
+            //    _publisher.Publish(new Greeting(_name, command.To, command.MessageText), command.To);
+            //}
+
+            var host = new Host
+            {
+                Output = Console.Out,
+                UserName = _name,
+                Publisher = _publisher,
+            };
+
+            host.AddCustomHandler(
+                () => throw new ExitException(),
+                "exit");
+
+            host.AddCustomHandler(
+                Console.Clear,
+                "cls");
 
             while (true)
             {
-                Console.Write($"{_name} >");
-                var txt = Console.ReadLine();
-                if (txt == "exit")
+                try
+                {
+                    Console.Write(" : ");
+                    var line = Console.ReadLine();
+                    var command = host.ParseLine(line);
+                    host.DispatchCommand(command);
+                }
+                catch (CliCustomHandlerException)
+                {
+                    // ignore
+                }
+                catch (ExitException)
                 {
                     break;
                 }
-
-                var command = parser.Parse(txt);
-                _publisher.Publish(new Greeting(_name, command.To, command.MessageText), command.To);
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
             }
 
             _subscriber.Dispose();
