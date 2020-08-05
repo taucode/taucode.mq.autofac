@@ -6,11 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
-    <PackageReference Include="TauCode.Mq.EasyNetQ" Version="1.0.0-dev-2020-03-15-08-30" />
+    <None Remove="Resources\Grammar.lisp" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="TauCode.Cli" Version="1.0.1" />
+    <PackageReference Include="TauCode.Mq.EasyNetQ" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Grammar.lisp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TauCode.Mq.Autofac\TauCode.Mq.Autofac.csproj" />
     <ProjectReference Include="..\TauCode.Mq.Autofac.Demo.All\TauCode.Mq.Autofac.Demo.All.csproj" />
   </ItemGroup>
 
