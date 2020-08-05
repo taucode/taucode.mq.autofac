@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{709CF0D4-DBFE-46E7-B797-09B67BF95F87}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{585AC245-8B6E-4F5E-8EEF-D4125EF88880}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{585AC245-8B6E-4F5E-8EEF-D4125EF88880}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{3D7345E7-A59D-409F-8649-927EF2AD9794}"
 	ProjectSection(SolutionItems) = preProject
@@ -20,19 +20,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{86DFAC41-2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac", "src\TauCode.Mq.Autofac\TauCode.Mq.Autofac.csproj", "{17F5E226-9664-444F-AD7A-E768F6479A15}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Demo.All", "tests\TauCode.Mq.Autofac.Demo.All\TauCode.Mq.Autofac.Demo.All.csproj", "{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Demo.Logger", "tests\TauCode.Mq.Autofac.Demo.Logger\TauCode.Mq.Autofac.Demo.Logger.csproj", "{2826CA3A-2C61-404C-9A55-D3CBE46C8485}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Demo.Node", "tests\TauCode.Mq.Autofac.Demo.Node\TauCode.Mq.Autofac.Demo.Node.csproj", "{3BDE9B7B-EB4C-4493-89BF-B35900DED55A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Tests", "tests\TauCode.Mq.Autofac.Tests\TauCode.Mq.Autofac.Tests.csproj", "{28353E8D-AB62-4F91-AC52-1E046D47B473}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{7D130D8B-8711-46F5-9244-1F73FE0542FB}"
 	ProjectSection(SolutionItems) = preProject
 		build\azure-pipelines-dev.yml = build\azure-pipelines-dev.yml
 		build\azure-pipelines.yml = build\azure-pipelines.yml
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Demo.All", "test\TauCode.Mq.Autofac.Demo.All\TauCode.Mq.Autofac.Demo.All.csproj", "{2AA6A624-DDB4-4884-B829-4C28EC9EF53A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Demo.Logger", "test\TauCode.Mq.Autofac.Demo.Logger\TauCode.Mq.Autofac.Demo.Logger.csproj", "{66AA49EC-3E07-45D5-8234-343570E5CC4D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Demo.Node", "test\TauCode.Mq.Autofac.Demo.Node\TauCode.Mq.Autofac.Demo.Node.csproj", "{6BC58209-81DF-40D4-83AC-E02B4DC0F538}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Mq.Autofac.Tests", "test\TauCode.Mq.Autofac.Tests\TauCode.Mq.Autofac.Tests.csproj", "{D2D66990-6236-4C06-B31C-A0AE3A5B53A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,32 +44,32 @@ Global
 		{17F5E226-9664-444F-AD7A-E768F6479A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17F5E226-9664-444F-AD7A-E768F6479A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17F5E226-9664-444F-AD7A-E768F6479A15}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2826CA3A-2C61-404C-9A55-D3CBE46C8485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2826CA3A-2C61-404C-9A55-D3CBE46C8485}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2826CA3A-2C61-404C-9A55-D3CBE46C8485}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2826CA3A-2C61-404C-9A55-D3CBE46C8485}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BDE9B7B-EB4C-4493-89BF-B35900DED55A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BDE9B7B-EB4C-4493-89BF-B35900DED55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BDE9B7B-EB4C-4493-89BF-B35900DED55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BDE9B7B-EB4C-4493-89BF-B35900DED55A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{28353E8D-AB62-4F91-AC52-1E046D47B473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{28353E8D-AB62-4F91-AC52-1E046D47B473}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{28353E8D-AB62-4F91-AC52-1E046D47B473}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{28353E8D-AB62-4F91-AC52-1E046D47B473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA6A624-DDB4-4884-B829-4C28EC9EF53A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA6A624-DDB4-4884-B829-4C28EC9EF53A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA6A624-DDB4-4884-B829-4C28EC9EF53A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA6A624-DDB4-4884-B829-4C28EC9EF53A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66AA49EC-3E07-45D5-8234-343570E5CC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66AA49EC-3E07-45D5-8234-343570E5CC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66AA49EC-3E07-45D5-8234-343570E5CC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66AA49EC-3E07-45D5-8234-343570E5CC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BC58209-81DF-40D4-83AC-E02B4DC0F538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC58209-81DF-40D4-83AC-E02B4DC0F538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC58209-81DF-40D4-83AC-E02B4DC0F538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC58209-81DF-40D4-83AC-E02B4DC0F538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2D66990-6236-4C06-B31C-A0AE3A5B53A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2D66990-6236-4C06-B31C-A0AE3A5B53A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2D66990-6236-4C06-B31C-A0AE3A5B53A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2D66990-6236-4C06-B31C-A0AE3A5B53A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{17F5E226-9664-444F-AD7A-E768F6479A15} = {709CF0D4-DBFE-46E7-B797-09B67BF95F87}
-		{B4B940A6-B1C1-48EF-AD77-4BD27E9CCAD1} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
-		{2826CA3A-2C61-404C-9A55-D3CBE46C8485} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
-		{3BDE9B7B-EB4C-4493-89BF-B35900DED55A} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
-		{28353E8D-AB62-4F91-AC52-1E046D47B473} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
+		{2AA6A624-DDB4-4884-B829-4C28EC9EF53A} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
+		{66AA49EC-3E07-45D5-8234-343570E5CC4D} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
+		{6BC58209-81DF-40D4-83AC-E02B4DC0F538} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
+		{D2D66990-6236-4C06-B31C-A0AE3A5B53A3} = {585AC245-8B6E-4F5E-8EEF-D4125EF88880}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA6859C8-B1CF-4CDF-A5FE-24E4FF8F85B8}
