@@ -5,11 +5,11 @@ namespace TauCode.Mq.Autofac.Demo.Node.Cli
 {
     public class AddIn : CliAddInBase
     {
-        protected override IReadOnlyList<ICliWorker> CreateWorkers()
+        protected override IReadOnlyList<ICliExecutor> CreateExecutors()
         {
-            return new List<ICliWorker>
+            return new ICliExecutor[]
             {
-                new Worker(),
+                new Executor(),
             };
         }
     }
