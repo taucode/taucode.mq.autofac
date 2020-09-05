@@ -27,7 +27,7 @@ namespace TauCode.Mq.Autofac.Demo.Node.Cli
             var worker = this
                 .GetAddIns()
                 .Single()
-                .GetWorkers()
+                .GetExecutors()
                 .Single();
             var descriptor = worker.Descriptor;
             var help = descriptor.GetHelp();

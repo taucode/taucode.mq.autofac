@@ -8,9 +8,9 @@ using TauCode.Mq.Autofac.Demo.All.Messages;
 
 namespace TauCode.Mq.Autofac.Demo.Node.Cli
 {
-    public class Worker : CliWorkerBase
+    public class Executor : CliExecutorBase
     {
-        public Worker()
+        public Executor()
             : base(
                 typeof(Host).Assembly.GetResourceText(".Grammar.lisp", true),
                 null,
