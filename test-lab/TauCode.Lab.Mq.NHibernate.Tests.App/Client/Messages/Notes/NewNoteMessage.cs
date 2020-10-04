@@ -11,7 +11,7 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App.Client.Messages.Notes
 
         public string UserId { get; set; }
         public string Subject { get; set; }
-        public string Text { get; set; }
+        public string Body { get; set; }
         public ImportanceDto Importance { get; set; }
     }
 }
