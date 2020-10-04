@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using TauCode.Lab.Mq.Autofac;
 using TauCode.Mq;
+using TauCode.Mq.Autofac;
 
 namespace TauCode.Lab.Mq.NHibernate
 {

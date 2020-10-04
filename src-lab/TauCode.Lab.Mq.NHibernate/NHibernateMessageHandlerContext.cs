@@ -2,7 +2,7 @@
 using NHibernate;
 using System;
 using System.Data;
-using TauCode.Lab.Mq.Autofac;
+using TauCode.Mq.Autofac;
 
 namespace TauCode.Lab.Mq.NHibernate
 {
