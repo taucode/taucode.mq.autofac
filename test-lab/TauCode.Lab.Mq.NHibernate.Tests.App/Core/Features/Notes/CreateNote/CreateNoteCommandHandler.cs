@@ -24,6 +24,8 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App.Core.Features.Notes.CreateNote
         {
             var note = new Note(command.UserId, command.Subject, command.Body);
             _noteRepository.Save(note);
+
+            return Task.CompletedTask;
         }
     }
 }

@@ -1,7 +1,9 @@
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Globalization;
+using TauCode.Mq;
 
 namespace TauCode.Lab.Mq.NHibernate.Tests.App
 {
@@ -16,6 +18,9 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App
 
             var migratorHelper = new FluentDbMigratorHelper("SQLite", startup.ConnectionString, typeof(Program).Assembly);
             migratorHelper.Migrate();
+
+            using IMessageSubscriber messageSubscriber = host.Services.GetService<IMessageSubscriber>();
+            messageSubscriber.Start();
 
             host.Run();
         }

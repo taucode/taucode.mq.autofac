@@ -9,6 +9,11 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App.Client
 {
     public class AppClient : IAppClient
     {
+        private class GetUserNotesQueryResult
+        {
+            public IList<NoteDto> Items { get; set; }
+        }
+
         private readonly HttpClient _httpClient;
 
         public AppClient(HttpClient httpClient)
@@ -25,8 +30,8 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App.Client
             }
 
             var json = await responseMessage.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<IList<NoteDto>>(json);
-            return result;
+            var result = JsonConvert.DeserializeObject<GetUserNotesQueryResult>(json);
+            return result.Items;
         }
     }
 }

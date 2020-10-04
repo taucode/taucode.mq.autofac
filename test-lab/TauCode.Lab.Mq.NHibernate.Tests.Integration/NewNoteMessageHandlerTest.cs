@@ -13,6 +13,7 @@ using TauCode.Extensions;
 using TauCode.Lab.Mq.NHibernate.Tests.App;
 using TauCode.Lab.Mq.NHibernate.Tests.App.Client;
 using TauCode.Lab.Mq.NHibernate.Tests.App.Client.Messages.Notes;
+using TauCode.Mq;
 
 namespace TauCode.Lab.Mq.NHibernate.Tests.Integration
 {
@@ -22,6 +23,7 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.Integration
         private TestFactory _factory;
         private ILifetimeScope _container;
         private IAppClient _appClient;
+        private IMessageSubscriber _subscriber;
 
         [SetUp]
         public void SetUp()
@@ -30,11 +32,19 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.Integration
             _factory = new TestFactory();
             var httpClient = this.CreateHttpClient();
             _appClient = new AppClient(httpClient);
+
+            var startup = _container.Resolve<IAppStartup>();
+            var migratorHelper = new FluentDbMigratorHelper("SQLite", startup.ConnectionString, typeof(Program).Assembly);
+            migratorHelper.Migrate();
+
+            _subscriber = _container.Resolve<IMessageSubscriber>();
+            _subscriber.Start();
         }
 
         [TearDown]
         public void TearDown()
         {
+            _subscriber.Dispose();
             _container.Dispose();
         }
 
@@ -76,7 +86,11 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.Integration
             var notes = await _appClient.GetUserNotes("ak@m.net");
 
             // Assert
-            throw new NotImplementedException();
+            var note = notes.Single();
+            Assert.That(note.Id, Is.Not.Null);
+            Assert.That(note.UserId, Is.EqualTo("ak@m.net"));
+            Assert.That(note.Subject, Is.EqualTo("Ocean"));
+            Assert.That(note.Body, Is.EqualTo("Ready for."));
         }
     }
 }

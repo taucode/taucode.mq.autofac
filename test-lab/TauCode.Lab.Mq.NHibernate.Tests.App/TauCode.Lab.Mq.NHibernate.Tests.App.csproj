@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src-lab\TauCode.Lab.Mq.EasyNetQ\TauCode.Lab.Mq.EasyNetQ.csproj" />
     <ProjectReference Include="..\..\src-lab\TauCode.Lab.Mq.NHibernate\TauCode.Lab.Mq.NHibernate.csproj" />
   </ItemGroup>
 

@@ -6,13 +6,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NHibernate.Cfg;
+using System;
 using TauCode.Cqrs.NHibernate;
+using TauCode.Lab.Mq.EasyNetQ;
+using TauCode.Lab.Mq.NHibernate.Tests.App.Core.Handlers.Notes;
+using TauCode.Lab.Mq.NHibernate.Tests.App.Domain.Notes;
+using TauCode.Lab.Mq.NHibernate.Tests.App.Persistence.Repositories;
+using TauCode.Mq;
 
 namespace TauCode.Lab.Mq.NHibernate.Tests.App
 {
     public class Startup : IAppStartup
     {
-        private readonly string _tempFilePath;
+        private readonly string _tempDbFilePath;
         private readonly string _connectionString;
 
         public Startup(IConfiguration configuration)
@@ -20,13 +26,16 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App
             Configuration = configuration;
 
             var tuple = AppHelper.CreateSQLiteDatabase();
-            _tempFilePath = tuple.Item1;
+            _tempDbFilePath = tuple.Item1;
             _connectionString = tuple.Item2;
         }
 
         public string ConnectionString => _connectionString;
+        public string TempDbFilePath => _tempDbFilePath;
+
         public IConfiguration Configuration { get; }
         public ILifetimeScope AutofacContainer { get; private set; }
+        public string RabbitMQConnectionString => "host=localhost";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -58,8 +67,39 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App
                 .AddCqrs(this.GetType().Assembly, typeof(TransactionalCommandHandlerDecorator<>));
 
             containerBuilder
+                .RegisterType<NHibernateNoteRepository>()
+                .As<INoteRepository>()
+                .InstancePerLifetimeScope();
+
+            containerBuilder
                 .RegisterInstance(this)
                 .As<IAppStartup>()
+                .SingleInstance();
+
+            containerBuilder
+                .Register(context => new NHibernateMessageHandlerContextFactory(context.Resolve<ILifetimeScope>()))
+                .As<IMessageHandlerContextFactory>()
+                .SingleInstance();
+
+            containerBuilder
+                .Register(context => context.Resolve<IMessageHandlerContextFactory>().CreateContext())
+                .As<IMessageHandlerContext>()
+                .InstancePerLifetimeScope();
+
+            containerBuilder
+                .RegisterType<NewNoteHandler>()
+                .AsSelf()
+                .InstancePerLifetimeScope();
+
+            containerBuilder
+                .Register(context => new EasyNetQMessageSubscriberLab(
+                    context.Resolve<IMessageHandlerContextFactory>(),
+                    this.RabbitMQConnectionString,
+                    new Type[]
+                    {
+                        typeof(NewNoteHandler),
+                    }))
+                .As<IMessageSubscriber>()
                 .SingleInstance();
         }
 

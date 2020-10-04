@@ -6,5 +6,6 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App
     {
         ILifetimeScope AutofacContainer { get; }
         string ConnectionString { get; }
+        string TempDbFilePath { get; }
     }
 }
