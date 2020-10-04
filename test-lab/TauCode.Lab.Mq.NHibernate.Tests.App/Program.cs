@@ -10,15 +10,19 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App
         public static void Main(string[] args)
         {
             Inflector.Inflector.SetDefaultCultureFunc = () => new CultureInfo("en-US");
-            CreateHostBuilder(args).Build().Run();
+
+            var host = CreateHostBuilder(args).Build();
+            var startup = (IAppStartup)host.Services.GetService(typeof(IAppStartup));
+
+            var migratorHelper = new FluentDbMigratorHelper("SQLite", startup.ConnectionString, typeof(Program).Assembly);
+            migratorHelper.Migrate();
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }

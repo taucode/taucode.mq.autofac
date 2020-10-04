@@ -1,11 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FluentMigrator;
 
 namespace TauCode.Lab.Mq.NHibernate.Tests.App.DbMigrations
 {
-    public class M0_Baseline
+    [Migration(0)]
+    public class M0_Baseline : ForwardOnlyMigration
     {
+        public override void Up()
+        {
+            this.Create.Table("note")
+                .WithColumn("id")
+                    .AsGuid()
+                    .NotNullable()
+                    .PrimaryKey()
+                .WithColumn("user_id")
+                    .AsString()
+                    .NotNullable()
+                .WithColumn("subject")
+                    .AsString()
+                    .NotNullable()
+                .WithColumn("body")
+                    .AsString()
+                    .NotNullable();
+        }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NHibernate.Cfg;
+using TauCode.Cqrs.NHibernate;
 
 namespace TauCode.Lab.Mq.NHibernate.Tests.App
 {
@@ -23,6 +24,7 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App
             _connectionString = tuple.Item2;
         }
 
+        public string ConnectionString => _connectionString;
         public IConfiguration Configuration { get; }
         public ILifetimeScope AutofacContainer { get; private set; }
 
@@ -50,7 +52,10 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
             var configuration = this.CreateConfiguration();
-            containerBuilder.AddNHibernate(configuration, this.GetType().Assembly);
+
+            containerBuilder
+                .AddNHibernate(configuration, this.GetType().Assembly)
+                .AddCqrs(this.GetType().Assembly, typeof(TransactionalCommandHandlerDecorator<>));
 
             containerBuilder
                 .RegisterInstance(this)

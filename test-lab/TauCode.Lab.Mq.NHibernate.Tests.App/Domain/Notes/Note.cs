@@ -22,9 +22,8 @@ namespace TauCode.Lab.Mq.NHibernate.Tests.App.Domain.Notes
         }
 
         public Guid Id { get; private set; }
-        public string Body { get; private set; }
-        public string Subject { get; private set; }
         public string UserId { get; private set; }
-
+        public string Subject { get; private set; }
+        public string Body { get; private set; }
     }
 }
