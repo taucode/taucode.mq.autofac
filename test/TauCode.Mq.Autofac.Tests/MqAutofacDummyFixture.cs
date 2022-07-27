@@ -8,7 +8,7 @@ namespace TauCode.Mq.Autofac.Tests
         [Test]
         public void MqAutofacDummyTest()
         {
-            Assert.Pass("Added for passing Jenkins.");
+            Assert.Pass("Added for passing Azure DevOps.");
         }
     }
 }
