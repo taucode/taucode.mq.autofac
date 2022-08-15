@@ -21,16 +21,18 @@ public class AutofacMessageHandlerContext : IMessageHandlerContext
 
     #region IMessageHandlerContext Members
 
-    public virtual void Begin()
+    public virtual Task BeginAsync(CancellationToken cancellationToken = default)
     {
         // idle
+        return Task.CompletedTask;
     }
 
     public virtual object GetService(Type serviceType) => _contextLifetimeScope.Resolve(serviceType);
 
-    public virtual void End()
+    public virtual Task EndAsync(CancellationToken cancellationToken = default)
     {
-        // end
+        // idle
+        return Task.CompletedTask;
     }
 
     #endregion
