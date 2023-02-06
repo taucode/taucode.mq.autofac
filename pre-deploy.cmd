@@ -1,9 +1,9 @@
 dotnet restore
 
-dotnet build --configuration Debug
-dotnet build --configuration Release
+dotnet build TauCode.Mq.Autofac.sln -c Debug
+dotnet build TauCode.Mq.Autofac.sln -c Release
 
-dotnet test -c Debug .\tests\TauCode.Mq.Autofac.Tests\TauCode.Mq.Autofac.Tests.csproj
-dotnet test -c Release .\tests\TauCode.Mq.Autofac.Tests\TauCode.Mq.Autofac.Tests.csproj
+dotnet test TauCode.Mq.Autofac.sln -c Debug
+dotnet test TauCode.Mq.Autofac.sln -c Release
 
 nuget pack nuget\TauCode.Mq.Autofac.nuspec
